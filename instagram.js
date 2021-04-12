@@ -23,3 +23,7 @@ Comentario.findOne({
 .then((resultado) => {
     console.log(resultado.toJSON());
 });
+
+Usuario.findByPk(1).then((resultado) => {
+    console.table(resultado.toJSON());
+})
