@@ -68,12 +68,87 @@ const { Op } = require('sequelize');
 //     console.log(resultado.map(user => user.toJSON()));
 // });
 
-for (let i = 0; i < 6; i += 2) {
-    Comentario.findAll({
-      order: [['id', 'ASC']],
-      offset: i,
-      limit: 2,
-    }).then((resultado) => {
-      console.table(resultado.map((comment) => comment.toJSON()));
-    });
-  }
+// for (let i = 0; i < 6; i += 2) {
+//     Comentario.findAll({
+//       order: [['id', 'ASC']],
+//       offset: i,
+//       limit: 2,
+//     }).then((resultado) => {
+//       console.table(resultado.map((user) => user.toJSON()));
+//     });
+//   }
+
+// Usuario.create({
+//     nome: 'Natalia',
+//     email: 'nat@digitalhouse.com',
+//     senha: 'maravilhosaaaa123'
+// }).then((resultado) => {
+//     console.log(resultado.toJSON());
+// });
+// Usuario.update({
+//     senha: 'novasenha123'
+// }, {
+//     where: {
+//         id: 8
+//     }
+// }).then((resultado) => {
+//     console.log(resultado);
+// })
+// Usuario.destroy({
+//     where: {
+//         id: 6
+//     }
+// }).then((resultado) => {
+//     console.log(resultado);
+// })
+
+// Usuario.create({
+//     nome: 'Mariana Rebouças',
+//     email: 'mariana@avanade.com',
+//     senha: 'mari123'
+// }).then((resultado) => {
+//     console.log(resultado.toJSON());
+// });
+
+// Post.create({
+//     nome: 'Mariana Rebouças',
+//     email: 'mariana@avanade.com',
+//     senha: 'mari123'
+// }).then((resultado) => {
+//     console.log(resultado.toJSON());
+// });
+
+// Post.create({
+//     texto: 'Que sono...',
+//     usuarios_id: 6,
+//     n_likes: 21
+// }).then((resultado) => {
+// console.log(resultado.toJSON());
+// });
+
+
+
+// Usuario.update({
+//     email: 'sergio@digitalhouse.com'
+// }, {
+//     where: {
+//         id: 2
+//     }
+// }).then((resultado) => {
+//     console.log(resultado);
+// });
+
+Usuario.destroy({
+    where: {
+        id: 3
+    }
+}).then((resultado) => {
+    console.log(resultado);
+});
+
+Usuario.findAll().then((usuarios) => {
+    console.log(usuarios.map((usuario) => usuario.toJSON()));
+})
+
+
+
