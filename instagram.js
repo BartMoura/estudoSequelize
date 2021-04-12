@@ -1,29 +1,80 @@
 const { Usuario, Post, Comentario, sequelize } = require('./models');
-
-Usuario.findAll()
-.then((resultado) => {
-    console.log(resultado.map(user => user.toJSON()));
-});
+const { Op } = require('sequelize');
 
 
-Post.findAll()
-.then((resultado) => {
-    console.log(resultado.map(user => user.toJSON()));
-});
+// Usuario.findAll()
+// .then((resultado) => {
+//     console.log(resultado.map(user => user.toJSON()));
+// });
 
 
-Comentario.findAll()
-.then((resultado) => {
-    console.log(resultado.map(user => user.toJSON()));
-});
+// Post.findAll()
+// .then((resultado) => {
+//     console.log(resultado.map(user => user.toJSON()));
+// });
 
-Comentario.findOne({
-    where: {usuarios_id: 2}
+
+// Comentario.findAll()
+// .then((resultado) => {
+//     console.log(resultado.map(user => user.toJSON()));
+// });
+
+// Comentario.findOne({
+//     where: {usuarios_id: 2}
+// })
+// .then((resultado) => {
+//     console.log(resultado.toJSON());
+// });
+
+// Usuario.findByPk(1).then((resultado) => {
+//     console.table(resultado.toJSON());
+// });
+
+// Post.findAll({
+//     where: {
+//         texto: {[Op.like]: '%oi%'}
+//     }
+// })
+// .then((resultado) => {
+//     console.log(resultado.map(user => user.toJSON()));
+// });
+
+// Usuario.findAll({
+//         order: [
+//             ['id', 'ASC'] // ASC para crescente, DESC para decrescente
+//         ],
+//         limit: 2, // trás só os 2 primeiros do resultado
+//         offset: 2 // trás a partir do 3
+// })
+// .then((resultado) => {
+//     console.log(resultado.map(user => user.toJSON()));
+// });
+
+Usuario.findAll({
+    where: {
+        nome: {[Op.like]: '%a%'}
+    }
 })
 .then((resultado) => {
-    console.log(resultado.toJSON());
+    console.log(resultado.map(user => user.toJSON()));
 });
 
-Usuario.findByPk(1).then((resultado) => {
-    console.table(resultado.toJSON());
+Usuario.findAll({
+    where: {
+        nome: {[Op.notLike]: '%a%'}
+    }
 })
+.then((resultado) => {
+    console.log(resultado.map(user => user.toJSON()));
+});
+
+Comentario.findAll({
+    order:[
+        ['id', 'ASC']  
+    ],
+    limit: 2, 
+    offset: 2
+})
+.then ((resultado) => {
+    console.table(resultado.map(user => user.toJSON())); 
+});
