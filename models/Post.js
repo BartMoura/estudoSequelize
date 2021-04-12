@@ -13,6 +13,14 @@ module.exports = (sequelize, DataTypes) => {
         }
     );
 
+    Post.associate = (models) => {
+        // relação N:1 (vários posts de um usuário)
+        Post.belongsTo(models.Usuario, {
+            as: "usuario",
+            foreignKey: "usuarios_id"
+        });
+    };
+
     return Post;
 
 }

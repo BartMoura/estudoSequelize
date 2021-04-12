@@ -138,17 +138,32 @@ const { Op } = require('sequelize');
 //     console.log(resultado);
 // });
 
-Usuario.destroy({
-    where: {
-        id: 3
+// Usuario.destroy({
+//     where: {
+//         id: 3
+//     }
+// }).then((resultado) => {
+//     console.log(resultado);
+// });
+
+// Usuario.findAll().then((usuarios) => {
+//     console.table(usuarios.map((usuario) => usuario.toJSON()));
+// })
+
+// Usuario.findByPk(1, {
+//     include: [
+//         {association: "posts"}
+//     ]
+// })
+// .then((usuario) => {
+//     console.table(usuario.posts.map((post) => post.toJSON()));
+// });
+
+Usuario.findByPk(1, {include:['posts']}).then(
+    usuario => {
+        console.log(usuario.toJSON());
+        sequelize.close();
     }
-}).then((resultado) => {
-    console.log(resultado);
-});
-
-Usuario.findAll().then((usuarios) => {
-    console.log(usuarios.map((usuario) => usuario.toJSON()));
-})
-
+);
 
 
